@@ -5,7 +5,7 @@ const Product = require('../model/Product');
 // Hiển thị danh sách sản phẩm
 exports.getProducts = async (req, res) => {
     try {
-        const products = await Product.find().sort({ ProductStoreCode: -1 });
+        const products = await Product.find();
         res.render('index', { products });
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -19,31 +19,28 @@ exports.newProductForm = (req, res) => {
 
 // Thêm sản phẩm mới
 exports.addProduct = async (req, res) => {
+    const { ProductCode, ProductName, ProductDate, ProductOriginPrice, Quantity, ProductStoreCode } = req.body;
+    const newProduct = new Product({
+        ProductCode,
+        ProductName,
+        ProductDate,
+        ProductOriginPrice,
+        Quantity,
+        ProductStoreCode
+    });
     try {
-        const { ProductCode, ProductName, ProductOriginPrice, Quantity, ProductStoreCode } = req.body;
-        const product = new Product({
-            ProductCode,
-            ProductName,
-            ProductOriginPrice,
-            Quantity,
-            ProductStoreCode
-        });
-        await product.save();
+        await newProduct.save();
         res.redirect('/products');
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(400).json({ message: err.message });
     }
 };
 
 // Xóa sản phẩm
 exports.deleteProduct = async (req, res) => {
+    const productId = req.params.id;
     try {
-        const productId = req.params.id;
-        const product = await Product.findById(productId);
-        if (!product) {
-            return res.status(404).json({ message: 'Sản phẩm không tồn tại' });
-        }
-        await product.remove();
+        await Product.findByIdAndDelete(productId);
         res.redirect('/products');
     } catch (err) {
         res.status(500).json({ message: err.message });

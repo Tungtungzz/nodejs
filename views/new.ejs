@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="mb-4">Thêm Sản phẩm mới</h1>
+    <div class="container mt-4">
+        <h1>Thêm Sản phẩm mới</h1>
         <form action="/products" method="POST">
             <div class="form-group">
                 <label for="ProductCode">Mã sản phẩm</label>
@@ -19,6 +19,10 @@
             <div class="form-group">
                 <label for="ProductName">Tên sản phẩm</label>
                 <input type="text" class="form-control" id="ProductName" name="ProductName" required>
+            </div>
+            <div class="form-group">
+                <label for="ProductDate">Ngày sản xuất</label>
+                <input type="date" class="form-control" id="ProductDate" name="ProductDate" required>
             </div>
             <div class="form-group">
                 <label for="ProductOriginPrice">Giá gốc</label>
