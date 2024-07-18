@@ -1,0 +1,43 @@
+<!-- views/new.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm Sản phẩm mới</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Thêm Sản phẩm mới</h1>
+        <form action="/products" method="POST">
+            <div class="form-group">
+                <label for="ProductCode">Mã sản phẩm</label>
+                <input type="text" class="form-control" id="ProductCode" name="ProductCode" required>
+            </div>
+            <div class="form-group">
+                <label for="ProductName">Tên sản phẩm</label>
+                <input type="text" class="form-control" id="ProductName" name="ProductName" required>
+            </div>
+            <div class="form-group">
+                <label for="ProductOriginPrice">Giá gốc</label>
+                <input type="number" class="form-control" id="ProductOriginPrice" name="ProductOriginPrice" required>
+            </div>
+            <div class="form-group">
+                <label for="Quantity">Số lượng</label>
+                <input type="number" class="form-control" id="Quantity" name="Quantity" required>
+            </div>
+            <div class="form-group">
+                <label for="ProductStoreCode">Mã kho hàng</label>
+                <input type="text" class="form-control" id="ProductStoreCode" name="ProductStoreCode" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
